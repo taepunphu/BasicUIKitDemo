@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TeamTableViewCellDelegate: AnyObject {
+    func didTapPlayback(for team: Team)
+}
+
 class TeamTableViewCell: UITableViewCell {
     
     static let cellId = "TeamTableViewCell"
@@ -77,6 +81,9 @@ class TeamTableViewCell: UITableViewCell {
         return lbl
     }()
     
+    private weak var delegate: TeamTableViewCellDelegate?
+    private var team: Team?
+    
     // MARK: - LifeCycle
     
     override func layoutSubviews() {
@@ -85,12 +92,25 @@ class TeamTableViewCell: UITableViewCell {
         containerVw.layer.cornerRadius = 10
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.team = nil
+        self.delegate = nil
+        self.contentView.subviews.forEach { $0.removeFromSuperview()}
+    }
     
-    func configure(with item: Team) {
+    
+    func configure(with item: Team, delegate: TeamTableViewCellDelegate) {
+        
+        self.team = item
+        self.delegate = delegate
+        
+        playbackBtn.addTarget(self, action: #selector(didTapPlayback), for: .touchUpInside)
+        
         containerVw.backgroundColor = item.id.background
         
         badgeImgVw.image = item.id.badge
-        playbackBtn.setImage(item.isPlaying ? Assets.play : Assets.pause, for: .normal)
+        playbackBtn.setImage(item.isPlaying ? Assets.pause : Assets.play, for: .normal)
         
         nameLbl.text = item.name
         foundedLbl.text = item.founded
@@ -129,5 +149,11 @@ class TeamTableViewCell: UITableViewCell {
             playbackBtn.trailingAnchor.constraint(equalTo: containerVw.trailingAnchor, constant: -8),
             playbackBtn.centerYAnchor.constraint(equalTo: containerVw.centerYAnchor)
         ])
+    }
+    
+    @objc func didTapPlayback() {
+        if let team = team {
+            delegate?.didTapPlayback(for: team)
+        }
     }
 }

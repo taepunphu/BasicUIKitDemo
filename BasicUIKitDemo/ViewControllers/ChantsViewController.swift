@@ -66,24 +66,17 @@ extension ChantsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let team = teamViewModel.teams[indexPath.row]
-        print(team)
         let cell = tableView.dequeueReusableCell(withIdentifier: TeamTableViewCell.cellId, for: indexPath) as! TeamTableViewCell
-        cell.configure(with: team)
+        cell.configure(with: team, delegate: self)
         return cell
-        
-//        switch indexPath.row {
-//        case 0:
-//            cell.backgroundColor = .systemTeal
-//        case 1:
-//            cell.backgroundColor = .systemGray
-//        case 2:
-//            cell.backgroundColor = .systemPink
-//        default:
-//            break
-//        }
-//        
-//        return cell
     }
-    
+}
+
+extension ChantsViewController: TeamTableViewCellDelegate {
+    func didTapPlayback(for team: Team) {
+        teamViewModel.togglerPlayback(for: team)
+        tableView.reloadData()
+        // print("The item that was selected: \(team.name)")
+    }
     
 }
