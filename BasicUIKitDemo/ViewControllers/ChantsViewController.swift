@@ -23,6 +23,8 @@ class ChantsViewController: UIViewController {
         return tv
     }()
     
+    private lazy var teamViewModel = TeamsViewModel()
+    
     // MARK: - LifeCycle
     override func loadView() {
         super.loadView()
@@ -59,12 +61,14 @@ private extension ChantsViewController {
 
 extension ChantsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return teamViewModel.teams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let team = teamViewModel.teams[indexPath.row]
+        print(team)
         let cell = tableView.dequeueReusableCell(withIdentifier: TeamTableViewCell.cellId, for: indexPath) as! TeamTableViewCell
-        cell.configure()
+        cell.configure(with: team)
         return cell
         
 //        switch indexPath.row {

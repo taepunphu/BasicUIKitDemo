@@ -86,16 +86,16 @@ class TeamTableViewCell: UITableViewCell {
     }
     
     
-    func configure() {
-        containerVw.backgroundColor = TeamType.arsenal.background
+    func configure(with item: Team) {
+        containerVw.backgroundColor = item.id.background
         
-        badgeImgVw.image = TeamType.arsenal.badge
-        playbackBtn.setImage(UIImage(systemName: "play.circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32)), for: .normal)
+        badgeImgVw.image = item.id.badge
+        playbackBtn.setImage(item.isPlaying ? Assets.play : Assets.pause, for: .normal)
         
-        nameLbl.text = "Arsenal"
-        foundedLbl.text = "October 1886"
-        jobLbl.text = "Current Manager: Mikel Ateta"
-        infoLbl.text = "Arsenal Football Club is a professional football club based in Islington, London, England, that plays in the Premier"
+        nameLbl.text = item.name
+        foundedLbl.text = item.founded
+        jobLbl.text = "Current \(item.manager.job.rawValue): \(item.manager.name)"
+        infoLbl.text = item.info
         
         self.contentView.addSubview(containerVw)
         
