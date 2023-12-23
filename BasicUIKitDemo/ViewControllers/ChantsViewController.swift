@@ -24,6 +24,7 @@ class ChantsViewController: UIViewController {
     }()
     
     private lazy var teamViewModel = TeamsViewModel()
+    private lazy var audioManagerViewModel = AudioManagerViewModel()
     
     // MARK: - LifeCycle
     override func loadView() {
@@ -74,6 +75,7 @@ extension ChantsViewController: UITableViewDataSource {
 
 extension ChantsViewController: TeamTableViewCellDelegate {
     func didTapPlayback(for team: Team) {
+        audioManagerViewModel.playback(team)
         teamViewModel.togglerPlayback(for: team)
         tableView.reloadData()
         // print("The item that was selected: \(team.name)")

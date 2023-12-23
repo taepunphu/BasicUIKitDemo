@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		955F53892B36D8950074FFCF /* AudioManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F53882B36D8950074FFCF /* AudioManagerViewModel.swift */; };
 		959C69FC2B3576A100FE7A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C69FB2B3576A100FE7A1F /* AppDelegate.swift */; };
 		959C69FE2B3576A100FE7A1F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C69FD2B3576A100FE7A1F /* SceneDelegate.swift */; };
 		959C6A082B3576A200FE7A1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959C6A062B3576A200FE7A1F /* LaunchScreen.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		955F53882B36D8950074FFCF /* AudioManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManagerViewModel.swift; sourceTree = "<group>"; };
 		959C69F82B3576A100FE7A1F /* BasicUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959C69FB2B3576A100FE7A1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959C69FD2B3576A100FE7A1F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				959C6A442B36962700FE7A1F /* TeamsViewModel.swift */,
+				955F53882B36D8950074FFCF /* AudioManagerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				959C6A382B36871200FE7A1F /* Teams.swift in Sources */,
 				959C69FC2B3576A100FE7A1F /* AppDelegate.swift in Sources */,
 				959C6A482B369A4600FE7A1F /* TeamTableViewCell.swift in Sources */,
+				955F53892B36D8950074FFCF /* AudioManagerViewModel.swift in Sources */,
 				959C6A402B36949900FE7A1F /* Team.swift in Sources */,
 				959C6A422B36950E00FE7A1F /* Manager.swift in Sources */,
 				959C69FE2B3576A100FE7A1F /* SceneDelegate.swift in Sources */,
